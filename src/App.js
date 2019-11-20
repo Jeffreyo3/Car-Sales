@@ -15,10 +15,10 @@ const App = (props) => {
     removeAddedFeature(item);
   };
 
-  const buyItem = item => {
-    // dipsatch an action here to add an item
-    addFeature(item);
-  };
+  // const buyItem = item => {
+  //   // dipsatch an action here to add an item
+  //   addFeature(item);
+  // };
 
   return (
     <div className="boxes">
@@ -27,7 +27,7 @@ const App = (props) => {
         <AddedFeatures car={props.car} removeFeature={removeFeature} />
       </div>
       <div className="box">
-        <AdditionalFeatures additionalFeatures={props.additionalFeatures} buyItem={buyItem} />
+        <AdditionalFeatures additionalFeatures={props.additionalFeatures} />
         <Total car={props.car} additionalPrice={props.additionalPrice} />
       </div>
     </div>
