@@ -1,6 +1,6 @@
 import { ADD_FEATURE, REMOVE_ADDED_FEATURE } from '../actions';
 
-export const inditialState = {
+export const initialState = {
     additionalPrice: 0,
     car: {
       price: 26395,
@@ -17,21 +17,29 @@ export const inditialState = {
     ]
 };
 
-export const reducer = (state = inditialState, action) => {
+export const reducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_FEATURE:
             return {
+                // spread state
                 ...state,
+                // set additionalPrice by adding current state price w/the action price
                 additionalPrice: state.additionalPrice + action.payload.price,
+                // set car features by spreading current car state, and adding the feature added via action
                 car: {...state.car, features: [...state.car.features, action.payload]},
+                // filter additionalFeatures so it no longer displays the selected feature
                 additionalFeatures: state.additionalFeatures.filter(feature => feature.id !== action.payload.id)
             };
 
         case REMOVE_ADDED_FEATURE:
             return {
+                // spread state
                 ...state,
+                // set additionalPrice by subtracting the action price from the current state price
                 additionalPrice: state.additionalPrice - action.payload.price,
+                // set car features by spreading current car state, and removing the feature selected via action
                 car: {...state. car, features: state.car.features.filter(feature => feature.id !== action.payload.id)},
+                // set additionalFeatures by displaying features that were removed but previously added to car before purchase
                 additionalFeatures: [...state.additionalFeatures, action.payload]
             };
 
