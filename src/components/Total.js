@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
 const Total = props => {
   return (
@@ -9,11 +9,12 @@ const Total = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    car: state.car,
-    additionalPrice: state.additionalPrice
-  };
-};
+// const mapStateToProps = state => {
+//   return {
+//     car: state.car,
+//     additionalPrice: state.additionalPrice
+//   };
+// };
 
-export default connect(mapStateToProps)(Total);
+// export default connect(mapStateToProps)(Total);
+export default Total;
