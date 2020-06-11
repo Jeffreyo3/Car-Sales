@@ -1,30 +1,20 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
+// import { connect } from 'react-redux';
 import { removeAddedFeature } from '../actions';
- 
-const AddedFeature = props => {
 
-  const handleRemoveFeature = () => {
-    props.removeAddedFeature(props.feature);
-  }
+const AddedFeature = props => {
+  const dispatch = useDispatch();
 
   return (
     <li>
-      {/* Add an onClick to run a function to remove a feature */}
-      <button 
-      className="button"
-      onClick={handleRemoveFeature}
+      <button
+        className="button"
+        onClick={() => dispatch(removeAddedFeature(props.feature))}
       >X</button>
       {props.feature.name}
     </li>
   );
 };
 
-const mapStateToProps = state => {
-  return {
-
-  };
-};
-
-export default connect(null, { removeAddedFeature })(AddedFeature);
-// export default AddedFeature;
+export default AddedFeature;
